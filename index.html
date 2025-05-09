@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js" defer></script>
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <div class="edit-section">
+         <label for="player-1">First player name (X)</label>
+         <input id="player-1" type="text" value="player-1"/>
+         <label for="player-2">Second player name (O)</label>
+         <input id="player-2" type="text" value="player-2"/>
+         <button class="confirm-edit-btn">Confirm</button>
+        </div>
+        <div class="game-board-container">
+            <div class="players-viewer"><span class="player-1-viewer">player-1 (X)</span><strong>VS</strong><span class="player-2-viewer">player-2 (O)</span></div>
+            <div class="game-board">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            </div>
+        </div>
+        <div class="buttons-container">
+            <div>
+            <button class="button-1">Play with Computer</button>
+            <button class="button-2">Reset</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
