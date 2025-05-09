@@ -106,6 +106,9 @@ font-size:20px;
      border-radius:10px;
      box-shadow:1px 1px 5px 1px whitesmoke inset;
 }
+.game-status {
+    display: none;
+}
 
 @media (max-width:768px) {
     .container {

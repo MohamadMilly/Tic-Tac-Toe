@@ -4,7 +4,7 @@ const player2Input = document.querySelector("#player-2");
 const confirmEditing = document.querySelector(".confirm-edit-btn");
 const player1Viewer = document.querySelector(".player-1-viewer");
 const player2Viewer = document.querySelector(".player-2-viewer");
-const playersViewer = document.querySelector(".players-viewer");
+const gameStatus = document.querySelector(".game-status");
 
 confirmEditing.addEventListener("click",()=>{
 if (player1Input.value !== "" && player2Input.value !== "" && isNaN(Number(player1Input.value)) && isNaN(Number(player2Input.value))) {
@@ -89,13 +89,18 @@ playWithComputerMode = false;
 humanTurn = true;
 computerTurn = false;
 turns = 0;
+player1Viewer.textContent = "player-1 (X)";
+player2Viewer.textContent = "player-2 (O)";
+document.querySelector(".VS").textContent = "VS";
+document.querySelector(".VS").style.display = "inline";
+     player1Viewer.style.display = "inline";
+     player2Viewer.style.display = "inline";
+     gameStatus.style.display = "none";
 cells.forEach((item)=>{
   item.textContent = "";
   item.style.backgroundColor = "";
 })
-playersViewer.innerHTML = `
-<div class="players-viewer"><span class="player-1-viewer">player-1 (X)</span><strong>VS</strong><span class="player-2-viewer">player-2 (O)</span></div>
-`;
+
 player2Input.value = "player-2";
 player1Input.value = "player-1";
 player2Input.disabled = false;
@@ -121,13 +126,26 @@ function checkWinner() {
     document.querySelectorAll(".cell")[a].style.backgroundColor = "rgb(63, 233, 63)";
      document.querySelectorAll(".cell")[b].style.backgroundColor = "rgb(63, 233, 63)";
      document.querySelectorAll(".cell")[c].style.backgroundColor = "rgb(63, 233, 63)";
-     playersViewer.textContent = Board[a] === "X" ? `${player1Viewer.textContent} has WON the game !` : `${player2Viewer.textContent} has WON the game !`;
-     
+     gameStatus.style.display = "inline";
+     gameStatus.textContent = Board[a] === "X" ? `${player1Viewer.textContent} has WON the game !` : `${player2Viewer.textContent} has WON the game !`;
+     player1Viewer.textContent = "";
+     player2Viewer.textContent = "";
+     document.querySelector(".VS").textContent = "";
+     document.querySelector(".VS").style.display = "none";
+     player1Viewer.style.display = "none";
+     player2Viewer.style.display = "none";
     }
-     else if (turns === 9) {
-      playersViewer.textContent = "It is a draw !";
-      return;
-     }
+    
+ }
+ if (hasSomeoneWon === false && turns === 9) {
+  document.querySelector(".VS").style.display = "none";
+     player1Viewer.style.display = "none";
+     player2Viewer.style.display = "none";
+  gameStatus.style.display = "inline";
+  player1Viewer.textContent = "";
+     player2Viewer.textContent = "";
+     document.querySelector(".VS").textContent = "";
+  gameStatus.textContent = "It is a draw !";
  }
 }
 })();
